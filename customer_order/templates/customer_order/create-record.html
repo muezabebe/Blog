@@ -1,0 +1,52 @@
+{% extends 'customer_order/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    <body>
+
+        <div class="container bg-light shadow-md p-5 form-layout">
+
+            <h3> Create order </h3>
+
+            <h6> Start adding in the required details for your order </h6>
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                {{form|crispy}}
+                
+                <button type="submit" class="btn btn-primary"> 
+                    
+                    Create order&nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+
+                </button>
+
+                &nbsp;
+
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary"> 
+
+
+                    Return Dashboard&nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+                </a>
+
+
+            </form>
+
+        </div>
+
+        <br>
+
+    </body>
+
+{% endblock %}
+
+
+
+

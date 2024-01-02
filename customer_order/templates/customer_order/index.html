@@ -1,0 +1,31 @@
+{% extends 'customer_order/base.html' %}
+
+{% block content %}
+    
+
+    <div class="notification-container" style="background-color: #dadedf;">
+        <p>here you are in the home page of ecommerce website</p>
+        <p>you can dive to login page from the above link if you have an account</p>
+        <p>if you don't have an account you can create an account, you can also create an account by the register link above</p>
+        <p>or you can enjoy here, isn't it?</p>
+        <p>that is the last, if you click this close button this notification wiill be disapeared.</p>
+        <button style="position: absolute;
+        bottom: 10;
+        right: 10;
+        background-color: hwb(0 75% 11%);
+        color: hwb(0 100% 0%);
+        padding: 10px" class="close-button" onclick="closeNotification()">Close</button>
+    </div>
+
+    <script>
+        // Function to close the notification
+        function closeNotification() {
+            var notification = document.querySelector('.notification-container');
+            notification.style.display = 'none';
+        }
+    </script>
+
+   
+
+
+{% endblock %}

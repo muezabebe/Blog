@@ -1,0 +1,11 @@
+<!-- your_app/templates/admin/login.html -->
+{% extends 'admin/login.html' %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom_login.css' %}">
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <p class="custom-text">Welcome to the Custom Admin Login Page!</p>
+{% endblock %}
