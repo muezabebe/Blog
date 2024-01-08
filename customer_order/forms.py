@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Order
+from .models import Post
 
 from django import forms
 
@@ -32,8 +32,8 @@ class CreateRecordForm(forms.ModelForm):
 
     class Meta:
 
-        model = Order
-        fields =        fields = ['customer_email', 'customer_phone', 'product_category','product_name', 'product_quantity']
+        model =Post
+        fields = fields = ['title', 'content','photo']
 
 
 
@@ -43,6 +43,6 @@ class UpdateRecordForm(forms.ModelForm):
 
     class Meta:
 
-        model = Order
-        fields =        fields = ['customer_email', 'customer_phone', 'product_category','product_name', 'product_quantity']
+        model =Post
+        fields = fields = [ 'title', 'content','photo']
 

@@ -12,23 +12,20 @@
             <strong>   
 
     
-                {{record.customer_email}}
+                {{record.author}}
     
             </strong>
     
             <hr> 
-
             <p> <strong> ID: </strong> {{record.id}} </p>
 
-            <p> <strong> customer_mail: </strong> {{record.customer_email}} </p>
 
-            <p> <strong> customer_Phone: </strong> {{record.customer_phone}} </p>
-            <p> <strong> product_category: </strong> {{record.product_category}} </p>
-            <p> <strong> product_name: </strong> {{record.product_name}} </p>
-            <p> <strong> product_quantity: </strong> {{record.product_quantity}} </p>
+            <p> <strong> TITLE: </strong> {{record.title}} </p>
 
-            <p> <strong> Creation date: </strong> {{record.creation_date}} </p>
+            <p> <strong> CONTENT: </strong> {{record.content}} </p>
 
+            <p> <strong> PUBLICATION DATE: </strong> {{record.pub_date}} </p>
+            <p> <strong> AUTHOR: </strong> {{record.author}} </p>
 
         </div>
 
@@ -41,7 +38,7 @@
 
     &nbsp;
 
-    <a href="{% url 'update-record' record.id %}" class="btn btn-info"> Update order &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+    <a href="{% url 'update-record' record.id %}" class="btn btn-info"> Update blog &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
 
     &nbsp;
 

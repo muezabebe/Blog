@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
 
-from .models import Order
+from .models import Post
 
 from django.contrib import messages
 
@@ -75,8 +75,7 @@ def my_login(request):
 @login_required(login_url='my-login')
 def dashboard(request):
 
-    my_records = Order.objects.all()
-
+    my_records = Post.objects.filter(author=request.user)
     context = {'records': my_records}
 
     return render(request, 'customer_order/dashboard.html', context=context)
@@ -91,12 +90,12 @@ def create_record(request):
 
     if request.method == "POST":
 
-        form = CreateRecordForm(request.POST)
+        form = CreateRecordForm(request.POST,request.FILES)
 
         if form.is_valid():
-
-            form.save()
-
+            blog=form.save(commit=False)
+            blog.author=request.user
+            blog.save()
             messages.success(request, "Your record was created!")
 
             return redirect("dashboard")
@@ -111,13 +110,13 @@ def create_record(request):
 @login_required(login_url='my-login')
 def update_record(request, pk):
 
-    record = Order.objects.get(id=pk)
+    record = Post.objects.get(id=pk)
 
     form = UpdateRecordForm(instance=record)
 
     if request.method == 'POST':
 
-        form = UpdateRecordForm(request.POST, instance=record)
+        form = UpdateRecordForm(request.POST,request.FILES, instance=record)
 
         if form.is_valid():
 
@@ -137,7 +136,7 @@ def update_record(request, pk):
 @login_required(login_url='my-login')
 def singular_record(request, pk):
 
-    all_records = Order.objects.get(id=pk)
+    all_records = Post.objects.get(id=pk)
 
     context = {'record':all_records}
 
@@ -149,7 +148,7 @@ def singular_record(request, pk):
 @login_required(login_url='my-login')
 def delete_record(request, pk):
 
-    record = Order.objects.get(id=pk)
+    record = Post.objects.get(id=pk)
 
     record.delete()
 

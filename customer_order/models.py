@@ -1,20 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Order(models.Model):
-
-    creation_date = models.DateTimeField(auto_now_add=True)
-    customer_email = models.EmailField(max_length=255)
-    customer_phone = models.IntegerField()
-    product_category=models.CharField(max_length=50, null=True)
-    product_name = models.CharField(max_length=100)
-    product_quantity=models.IntegerField()
-
-
-
+class Post(models.Model):
+    pub_date = models.DateTimeField(auto_now=True)
+    title=models.CharField(max_length=255,null=True)
+    content = models.TextField()
+    photo=models.ImageField(null=True,blank=True,upload_to="images/")
+    author=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 
     def __str__(self):
 
-        return f'(email: {self.customer_email}) (phone:{self.customer_phone}) (category: {self.product_category})(name:{self.product_name})(quantity:{self.product_quantity})'
+        return f'(pub_date: {self.pub_date}) (title:{self.title}) (content: {self.content})(author:{self.author})'
 
 
 

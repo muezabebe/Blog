@@ -10,7 +10,7 @@
 
     <a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
 
-        Create a new order &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        Create a new blog &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
 
     </a>
 
@@ -21,14 +21,12 @@
         <thead class="table-light">
 
             <tr>
-
                 <th scope="col"> ID </th>
-                <th scope="col"> customer_email</th>
-                <th scope="col"> customer_phone </th>
-                <th scope="col"> product_category </th>
-                <th scope="col"> product_name</th>
-                <th scope="col"> product_quantity </th>
-                <th scope="col"> Date ordered </th>
+                <th scope="col"> TITLE </th>
+                <th scope="col"> CONTENT</th>
+                <th scope="col"> PUBLICATION DATE </th>
+                <th scope="col"> AUTHOR </th>
+                <th scope="col"> IMAGE </th>
 
                 <th scope="col"> View </th>
 
@@ -45,16 +43,16 @@
             <tr>
 
                 <td> {{record.id}} </td>
+                <td> {{record.title}} </td>
 
-                <td> {{record.customer_email}} </td>
+                <td> {{record.content}} </td>
 
-                <td> {{record.customer_phone}} </td>
-                <td> {{record.product_category}} </td>
-
-                <td> {{record.product_name}} </td>
-                <td> {{record.product_quantity}} </td>
-
-                <td> {{record.creation_date}} </td>
+                <td> {{record.pub_date}} </td>
+                <td> {{record.author}} </td>
+                <td>
+                {% if record.photo%}
+                <img src="{{record.photo.url}}" alt="{{record.photo}}" width="100" height="100">
+              {%endif%}</td>
 
                 <td> <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
 
@@ -63,7 +61,6 @@
             {% endfor %}
         
         {% endif %}
-
 
         </tbody>
 
