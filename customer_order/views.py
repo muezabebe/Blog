@@ -80,7 +80,10 @@ def dashboard(request):
 
     return render(request, 'customer_order/dashboard.html', context=context)
 
-
+def dashboardall(request):
+    records=Post.objects.all()
+    context={'records':records}
+    return render(request, 'customer_order/dashboardall.html', context=context)
 # - Create a record 
 
 @login_required(login_url='my-login')
@@ -142,7 +145,14 @@ def singular_record(request, pk):
 
     return render(request, 'customer_order/view-record.html', context=context)
 
+@login_required(login_url='my-login')
+def allsingular_record(request, pk):
 
+    all_records = Post.objects.get(id=pk)
+
+    context = {'record':all_records}
+
+    return render(request, 'customer_order/viewallrecord.html', context=context)
 # - Delete a record
 
 @login_required(login_url='my-login')

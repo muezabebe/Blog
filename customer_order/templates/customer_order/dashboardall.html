@@ -6,15 +6,6 @@
 
     <h5> Welcome, {{user}}! 👋 </h5>
 
-    <hr>
-
-    <a class="btn btn-lg btn-success" href="{% url 'create-record' %}"><span class="glyphicon  
-        glyphicon-plus"> Create new blog  </a>
-
-        
-
-   
-
     <hr> 
 
     <table class="table table-hover table-bordered">
@@ -28,8 +19,6 @@
                 <th scope="col"> PUBLICATION DATE </th>
                 <th scope="col"> AUTHOR </th>
                 <th scope="col"> IMAGE </th>
-
-                <th scope="col"> View </th>
 
             </tr>
 
@@ -52,11 +41,9 @@
                 <td> {{record.author}} </td>
                 <td>
                 {% if record.photo%}
-                <img src="{{record.photo.url}}" alt="{{record.photo}}" width="100" height="100">
+                <img src="{{record.photo.url}}" alt="{{record.photo}}" width="200" height="200">
               {%endif%}</td>
-
-                <td> <a class="btn btn-success btn-sm" href="{% url 'record' record.id %}"><span class="glyphicon  
-                    glyphicon-eye-open"></a> </td>
+              <td> <a class="btn btn-success btn-sm" href="{% url 'allrecord' record.id %}"> <span class="glyphicon glyphicon-eye-open"></span> </a> </td>
 
             </tr>
 
@@ -74,7 +61,6 @@
                 <td>end</td>
                 <td>end</td>
                 <td>end</td>
-
             </tr>
         </tfoot>
 
