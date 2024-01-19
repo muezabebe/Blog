@@ -1,7 +1,5 @@
 welcome to django Blog app
 
-Please ensure that you create your own virtual environment and install all the necessary packages via the requirements.txt file. 
-this is a blog app description, that is final project of opensource.
 
 #my navigation bars
   *before login
